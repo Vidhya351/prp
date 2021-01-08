@@ -1,0 +1,112 @@
+package words;
+
+import java.io.File; 
+ 
+import java.io.FileNotFoundException;
+
+import java.util.Map;
+
+import java.util.Scanner;
+
+import java.util.TreeMap;
+
+import java.util.TreeSet;
+
+public class wordsChallenge
+{
+  public static void main(String[] args) 
+{
+	  String s1[]=new String[1000];
+	  String s2[]=new String[1000];
+	  String pass[]=new String[124456];
+	  String a = null,b = null;
+    try
+ {
+      File s3 = new File("C:\\Users\\VIDHYA\\Desktop\\xyz.txt");
+      Scanner sc = new Scanner(s3);
+      while (sc.hasNextLine())
+ {
+    	  for(int i=0;i<124456;i++)
+ {
+        String value = sc.nextLine();
+        pass[i]=value;
+    	 
+ }
+      
+}
+      sc.close();
+          File s4 = new File("C:\\Users\\VIDHYA\\Desktop\\vid.txt");
+          Scanner sc1 = new Scanner(s4);
+          while (sc1.hasNextLine()) 
+{
+        	  for(int i1=0;i1<1000;i1++)
+ {
+            String value1 = sc1.nextLine();
+            s1[i1]=value1;
+        	 
+ }
+         
+ }
+      sc1.close();
+      File s5 = new File("C:\\Users\\VIDHYA\\Desktop\\fr_dic.txt");
+      Scanner sc2 = new Scanner(s5);
+      while (sc2.hasNextLine())
+ {
+    	  for(int j=0;j<1000;j++) 
+{
+        String value2 = sc2.nextLine();
+            s2[j]=value2;
+    	  }
+      
+}
+      TreeSet<String> obj=new TreeSet<String>();
+      for(int j1=0;j1<1000;j1++)
+         System.out.println(s2[j1]);
+  sc2.close();
+  int c=0;//count
+	  for(int j=0;j<124456;j++)
+ {
+		  String s=pass[j];
+		  String x[]=s.split(" ");
+		  for(int j1=0;j1<x.length;j1++)
+		  
+{
+			  int f=0;
+			  for(int i=0;i<1;i++) 
+{
+				  String b1=s1[i];
+				  String w[]=b1.split(",");
+					  a=w[0];
+					  b=w[1];
+			  if(x[j1].equals(a))
+			  
+{
+				  f=1;
+				  c++;
+				  x[j1]=b;
+				  System.out.print(x[j1]+" ");
+				  obj.add(a);
+			  }
+		  }
+
+			  if(f==0)
+				  System.out.print(x[j1]+" ");
+	  }
+		  System.out.println(" ");
+	  }
+
+	  System.out.println(obj);
+ System.out.println(c);
+    }
+    
+
+      catch (FileNotFoundException ffe) {
+      ffe.printStackTrace();
+  }
+
+    Runtime run=Runtime.getRuntime();
+    System.out.println("Time taken to process "+run);
+    System.out.println("Memory taken to process "+(run.totalMemory()-run.freeMemory()));
+}
+
+}
